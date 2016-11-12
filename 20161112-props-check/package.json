@@ -1,0 +1,8 @@
+{
+  "name": "20161112-props-check",
+  "version": "1.0.0",
+  "description": "A short and simple demo of our props-check library",
+  "main": "index.js",
+  "author": "Nathan Anthony Sculli <nsculli@influential.co>",
+  "license": "MIT"
+}
