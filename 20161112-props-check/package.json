@@ -4,5 +4,18 @@
   "description": "A short and simple demo of our props-check library",
   "main": "index.js",
   "author": "Nathan Anthony Sculli <nsculli@influential.co>",
-  "license": "MIT"
+  "license": "MIT",
+  "eslintconfig": {
+    "extends": "influential"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.0",
+    "eslint-config-influential": "^1.1.0"
+  },
+  "dependencies": {
+    "express": "^4.14.0",
+    "jigawatt": "^0.1.16",
+    "props-check": "^0.3.2",
+    "ramda": "^0.22.1"
+  }
 }
