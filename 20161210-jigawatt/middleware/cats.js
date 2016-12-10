@@ -5,6 +5,8 @@ const got = require('got')
 // from elm docs
 const BASE_URL = 'https://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag='
 
+const CAT_URL = 'http://thecatapi.com/api/images/get?format=html&type=gif'
+
 // add must be calico here
 
 
@@ -16,6 +18,19 @@ const hello = {
 }
 
 
+const isCat = R.pathEq(['params', 'topic'], 'cat')
+
+
+const getCat = {
+
+  io: (req, data) => ({
+    cat: got(CAT_URL).then(R.prop('body'))
+  })
+
+, transform: (req, data) => data.cat
+}
+
+
 const get = {
 
   awesomize: (v) => ({
@@ -23,7 +38,7 @@ const get = {
     topic: {
 
       read: (req) => req.params.topic
-    , saitize: [ R.when(R.identity, R.toLower) ]
+    , sanitize: [ R.when(R.identity, R.toLower) ]
     , validate: [ v.required ]
     , normalize: [ R.when(R.identity, R.trim) ]
     }
@@ -37,7 +52,8 @@ const get = {
 
 
 , transform: (req, data) => R.compose(
-    R.prop('data')
+    (x) => `<img src="${x.image_original_url}" />`
+  , R.prop('data')
   , JSON.parse
   , R.prop('giphy')
   )(data)
@@ -45,4 +61,4 @@ const get = {
 
 
 
-module.exports = { hello, get }
+module.exports = { hello, get, isCat, getCat }

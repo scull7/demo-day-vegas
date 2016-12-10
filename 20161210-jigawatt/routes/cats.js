@@ -5,18 +5,33 @@ const Cats    = require('../middleware/cats.js')
 
 
 // this is a demo so I can put this here.
-const render = (req, res, next) => JW.promisify(Cats.get)(req).then((data) =>
-  res.send(`
-    <html>
-    <body>
-      <pre>${JSON.stringify(data)}</pre>
-      <img src=${data.image_original_url} />
-    </body>
-    </html>
-  `)
-)
+const render = (req, res, next) =>
 
+  JW.promisify(JW.branch(
+    Cats.isCat
+  , Cats.getCat
+  , Cats.get
+  ))(req)
 
+  .then(data =>
+    res.send(`
+      <html>
+      <body>
+        ${data}
+      </body>
+      </html>
+    `)
+  )
+
+  .catch(err => 
+    res.send(`
+      <html>
+      <body>
+        <pre>${err}</pre>
+      </body>
+      </html>
+    `)
+  )
 
 
 const CatRoutes    = () => {
