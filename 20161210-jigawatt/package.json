@@ -1,0 +1,25 @@
+{
+  "name": "20161112-props-check",
+  "version": "1.0.0",
+  "description": "A short and simple demo of our props-check library",
+  "main": "index.js",
+  "author": "Nathan Anthony Sculli <nsculli@influential.co>",
+  "license": "MIT",
+  "eslintconfig": {
+    "extends": "influential"
+  },
+  "devDependencies": {
+    "eslint": "^3.10.0",
+    "eslint-config-influential": "^1.1.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "express": "^4.14.0",
+    "got": "^6.6.3",
+    "jigawatt": "^0.1.16",
+    "json-error-handler": "^0.2.2",
+    "morgan": "^1.7.0",
+    "props-check": "^0.3.2",
+    "ramda": "^0.22.1"
+  }
+}

@@ -1,0 +1,8 @@
+apps:
+
+  - script: ./bin/server.js
+    name: Demo Day - LV - Jigawatt
+    watch: true
+    exec_mode: fork
+    env:
+      NODE_ENV: development
